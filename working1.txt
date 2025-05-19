@@ -1,0 +1,117 @@
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import OneHotEncoder
+from sklearn.compose import ColumnTransformer
+from sklearn.pipeline import Pipeline
+from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
+from xgboost import XGBRegressor
+import joblib
+import warnings
+
+# Suppress warnings for cleaner output
+warnings.filterwarnings('ignore')
+
+# Load data
+skills_data = pd.DataFrame({
+    'ctc': [6, 8, 12, 15],
+    'skill1': ['html', 'js', 'react', 'go'],
+    'skill2': ['css', 'react', 'aws', 'devops'],
+    'yoe': [2, 2, 3, 3.5]
+})
+
+# Clean data (remove whitespace from strings)
+skills_data['skill1'] = skills_data['skill1'].str.strip()
+skills_data['skill2'] = skills_data['skill2'].str.strip()
+
+# Separate features and target
+X = skills_data.drop(columns=['ctc'])
+y = skills_data['ctc']
+
+# With small datasets, better to use all data for training
+# and evaluate with cross-validation or simply inspect predictions
+X_train, X_test, y_train, y_test = X, None, y, None  # Using all data for training
+
+# Identify categorical columns
+categorical_cols = ['skill1', 'skill2']
+
+# Create preprocessing pipeline
+preprocessor = ColumnTransformer(
+    transformers=[
+        ('cat', OneHotEncoder(handle_unknown='ignore'), categorical_cols)
+    ],
+    remainder='passthrough'  # keeps the 'yoe' column as is
+)
+
+# Define models to try
+models = {
+    'Decision Tree': DecisionTreeRegressor(random_state=42),
+    'Random Forest': RandomForestRegressor(random_state=42),
+    'Gradient Boosting': GradientBoostingRegressor(random_state=42),
+    'XGBoost': XGBRegressor(random_state=42)
+}
+
+best_model = None
+best_model_name = ""
+results = {}
+
+# Train and evaluate each model
+for name, model in models.items():
+    try:
+        # Create pipeline
+        pipeline = Pipeline(steps=[
+            ('preprocessor', preprocessor),
+            ('regressor', model)
+        ])
+        
+        # Train model with all data
+        pipeline.fit(X_train, y_train)
+        
+        # Store the model
+        results[name] = {
+            'model': pipeline,
+            'trained': True
+        }
+        
+        # Set the first model as best model (since we can't properly evaluate with small data)
+        if best_model is None:
+            best_model = pipeline
+            best_model_name = name
+    
+    except Exception as e:
+        results[name] = {
+            'model': None,
+            'trained': False,
+            'error': str(e)
+        }
+
+# Print training results
+print("Model Training Results:")
+for model_name, result in results.items():
+    status = "SUCCESS" if result['trained'] else f"FAILED: {result.get('error', 'Unknown error')}"
+    print(f"{model_name}: {status}")
+
+# Save the best model
+if best_model is not None:
+    joblib.dump(best_model, 'ctc_predictor_model.pkl')
+    print(f"\nBest model ({best_model_name}) saved as 'ctc_predictor_model.pkl'")
+else:
+    print("\nNo model was successfully trained")
+
+# Example predictions using the best model
+if best_model is not None:
+    test_cases = [
+        {'skill1': 'react', 'skill2': 'aws', 'yoe': 4},
+        {'skill1': 'html', 'skill2': 'css', 'yoe': 2},
+        {'skill1': 'go', 'skill2': 'devops', 'yoe': 5}
+    ]
+    
+    print("\nExample Predictions:")
+    for case in test_cases:
+        sample_input = pd.DataFrame([case])
+        predicted_ctc = best_model.predict(sample_input)
+        print(f"\nInput: {case}")
+        print(f"Predicted CTC: {predicted_ctc[0]:.2f} LPA")
+else:
+    print("\nCannot make predictions - no model available")

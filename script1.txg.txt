@@ -1,0 +1,37 @@
+import pandas as pd
+from sklearn.preprocessing import OneHotEncoder
+from sklearn.compose import ColumnTransformer
+from sklearn.tree import DecisionTreeRegressor  # Changed to Regressor
+from sklearn.pipeline import Pipeline
+
+# Load data
+skills_data = pd.read_csv("../data/raw/skills.csv")
+
+# Separate features and target
+X = skills_data.drop(columns=['ctc'])  # Input features
+y = skills_data['ctc']  # Target variable
+
+# Identify categorical columns
+categorical_cols = ['skill1', 'skill2']
+
+# Create preprocessing pipeline
+preprocessor = ColumnTransformer(
+    transformers=[
+        ('cat', OneHotEncoder(handle_unknown='ignore'), categorical_cols)
+    ],
+    remainder='passthrough'  # keeps the 'yoe' column as is
+)
+
+# Create model pipeline
+model = Pipeline(steps=[
+    ('preprocessor', preprocessor),
+    ('regressor', DecisionTreeRegressor())  # Using regressor instead of classifier
+])
+
+# Train the model
+model.fit(X, y)
+
+# Now you can make predictions
+# Example:
+# new_data = pd.DataFrame({'skill1': ['react'], 'skill2': ['aws'], 'yoe': [4]})
+# predicted_ctc = model.predict(new_data)

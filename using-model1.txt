@@ -1,0 +1,17 @@
+import joblib
+joblib.dump(best_model, 'ctc_predictor.pkl')  # Saved pipeline
+import joblib
+import pandas as pd
+
+# Load the saved pipeline
+model = joblib.load('ctc_predictor.pkl') 
+
+# New data (must match training format)
+new_data = pd.DataFrame({
+    'skill1': ['python'],   # New skill (not in training)
+    'skill2': ['sql'],      # New skill 
+    'yoe': [3]             # Years of experience
+})
+
+predicted_ctc = model.predict(new_data)
+print(f"Predicted CTC: {predicted_ctc[0]:.2f} LPA")

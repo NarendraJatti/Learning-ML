@@ -1,0 +1,180 @@
+
+ML is subset of AI.Systems learn from data.
+ML >>
+1)supervised learning 2)unsupervised 3)refinforcement learning(feedback learning) 4)supervised plus unsupervided{semi-supervised}
+
+clustering techninue>>to find lables(classify)
+
+supervised 
+===========
+predictive analytics
+prior experience,can not solve complex tasks
+model training iterative process,divide training data properly,more time for training [compute,memomry more]
+1)classification(knn,decsion tree,rain forest,xgboost etc) 2) regression(linerar relationship,predicted variable(line)  ) 3) forecasting(time(date) series forecastin)(extension of regression,) 4)time series analysis 
+labeled data>>for triaing used
+traingig data,testing data
+
+
+unsupervised data
+===============
+fraud detection(withoout labels)
+k-means
+db scan,hierachy scan
+
+ML >>predictive analysis
+x var,y variables
+features:
+input varialbes>>features ,x variables,predictors,independent varialbes
+y varialbe>>ouput ,dependent ,labels
+
+train test split >>80/20 usually split
+==============
+sklearn library >train_test_split
+model >>neural networks,brain
+training data >>feed to model/algo
+test data >>to verify ,final predictions
+in realtity we deal with many models
+how to do test ?how to compare test with actual data ?
+validation set?
+
+feature sclaing >>imp
+========
+to make models unbaised for higher values
+sclaed down values,divide all the values by the largest value ,nature remains same
+standardization
+normalization
+
+
+standardization
+========
+sclaing down values
+sklearn library
+z-score values
+-3 to +3
+
+99.7 perecent
+z-score = (x- mu)/sigma
+mu -mean value
+
+normalization
+=========
+0 to 1 range
+sclaing down values
+
+feature encoding
+============
+models pritorities higher numbers
+independent varialbes,input data,x variables,features
+ouput varialbe>>dependent variable
+conversition techinique >categorical variables to numerical value
+label encoding(idiotic encoding)>>categorical variables to numerical value by assinging numerical values >>advised to use for ouput variables
+one-hot encoding>>  0 and 1,important
+dummy encoding > extra(derived) features,one of feature can be ignored,(n-1) dummy featues
+get_dummies(),drop_last(),drop_first
+
+
+
+
+=========
+Labeled Data
+Labeled data is a dataset where each input (example) is paired with the correct output (label). This is used in supervised learning to train models.
+
+Trained Data vs. Test Data
+Trained Data (Training Set): Used to train the model. It has both inputs (features) and labels (correct answers).
+
+Test Data (Test Set): Used to evaluate the model's performance. It only has inputs (features), and the model predicts the labels.
+
+Simple Example: Fruit Classification
+Dataset:
+
+Size (cm)	Color	Label (Fruit)
+10	Red	Apple
+5	Yellow	Banana
+8	Orange	Orange
+12	Green	Watermelon
+Training Data (Labeled): Used to teach the model.
+
+Example: (Size=10, Color=Red) → Label=Apple
+
+Test Data (Unlabeled): Used to check if the model learned correctly.
+
+Example: (Size=7, Color=Orange) → Model predicts Orange.
+
+Why Test Data Doesn’t Have Labels?
+The purpose is to simulate real-world scenarios where the model must predict without knowing the correct answer.
+
+After prediction, we compare the model's output with the true labels (if available) to measure accuracy.
+
+
+
+
+
+
+
+Understanding the Model & Predictions
+Since you have a very small dataset (only 4 samples), the model is essentially memorizing the training data rather than learning general patterns. This is why you see exact matches between input data and predicted CTC (e.g., {'skill1': 'html', 'skill2': 'css', 'yoe': 2} predicts 6.00 LPA, which is identical to your training data).
+B. Model Training
+The Decision Tree Regressor (default model) splits data based on feature values to predict CTC.
+
+Since you have only 4 samples, the tree just memorizes them:
+
+html + css + 2 yoe → 6 LPA
+
+js + react + 2 yoe → 8 LPA
+
+react + aws + 3 yoe → 12 LPA
+
+go + devops + 3.5 yoe → 15 LPA
+
+C. Prediction
+When you input:
+
+python
+{'skill1': 'react', 'skill2': 'aws', 'yoe': 4}
+The model finds the closest match (react + aws + 3 yoe → 12 LPA) and predicts 12.00 LPA (even though yoe=4 is new, the model has no generalization ability).
+
+Best Model: The one with the lowest MAE/RMSE and highest R² on test data.
+
+B. Feature Engineering
+Add more features:
+
+company, location, education, job_title.
+
+Create new features:
+
+skill_level (Beginner/Intermediate/Expert).
+
+skill_combo (e.g., react+aws = "Frontend + Cloud").
+
+C. Try Advanced Models
+Hyperparameter Tuning (GridSearchCV)
+
+Neural Networks (if data is large)
+
+Ensemble Methods (Stacking)
+
+
+Key Takeaways
+Decision Trees memorize small data → Need more samples.
+
+Compare models using cross-validation (since test data is tiny).
+
+Best model = Lowest MAE (Mean Absolute Error).
+
+Improve by collecting more data & features.
+
+
+
+
+Regresssion
+=============
+regession metrics
+MAE>means absolute error
+MSE>means square error >>loss function
+RMSE>root mean square error>>imp 
+R2 score>imp ,r2=0 means regression line is badn and r2=1,good/perfect regression line
+r2 represent variance(matching),r2=0.9>>90 percnet matching
+r2 core adjsuted
+
+
+
