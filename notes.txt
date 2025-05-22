@@ -761,7 +761,134 @@ randomzised serach value
 
 classification
 ==============
+prediction probality >> 1, 0
 binary classification
 multi class classification 
 
 
+classification log loss /classfication metrics 
+======================
+metrics > to evaluate model 
+log loss 
+confustion metrics
+auc roc etc 
+
+log loss 
+========
+prediction probality >> 1, 0
+
+Log Loss (Logarithmic Loss) is a performance metric used to evaluate classification models, especially when the model outputs probabilities (e.g., logistic regression, neural networks). It measures the uncertainty of predicted probabilities by comparing them to the actual class labels.
+
+Key Properties of Log Loss
+Lower is better (Ideal value: 0, Worst case: ∞).
+
+Penalizes incorrect classifications more harshly when the model is confident but wrong.
+
+Works well for probabilistic outputs (unlike accuracy, which only considers class labels).
+Mathematical Formula
+For binary classification (two classes: 0 and 1):
+
+Log Loss
+=
+−
+1
+N
+∑
+i
+=
+1
+N
+[
+y
+i
+log
+⁡
+(
+p
+i
+)
++
+(
+1
+−
+y
+i
+)
+log
+⁡
+(
+1
+−
+p
+i
+)
+]
+Log Loss=− 
+N
+1
+​
+  
+i=1
+∑
+N
+​
+ [y 
+i
+​
+ log(p 
+i
+​
+ )+(1−y 
+i
+​
+ )log(1−p 
+i
+​
+ )]
+Where:
+
+y
+i
+y 
+i
+​
+  = True label (0 or 1).
+
+p
+i
+p 
+i
+​
+  = Predicted probability of class 1.
+
+N
+N = Number of samples.
+
+Why Use Log Loss?
+Differentiates between uncertain and confident wrong predictions (unlike accuracy).
+
+Works well for imbalanced datasets (since it considers probabilities).
+
+Used in training logistic regression and neural networks (as a loss function).
+Conclusion
+Log Loss is a crucial metric for evaluating probabilistic classifiers. A lower Log Loss means better-calibrated predictions, while a higher Log Loss indicates poor confidence or misclassifications.
+
+
+confusion metric>>classification metrics 
+==========
+flase negative>>type 2-error 
+false postive >type -1 error 
+recall,precision,f1 score ,accuracy 
+
+metric>>area under roc(AUC roc)
+===============
+roc >reciver operatora charesstics 
+evaluate performance of classification
+auc score =1 perfect 
+
+
+classfication report >classfication metrcis >>importatn 
+=============
+KNN classifier ,k neares nerighbour algo 
+supervised algo ,both classification and regression
+euclidean distance   
