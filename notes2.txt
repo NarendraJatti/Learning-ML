@@ -1,0 +1,53 @@
+https://ml-playground.com/ 
+
+https://teachablemachine.withgoogle.com/
+ 
+ narrow AI 
+ General AI 
+ ML >>AI 
+ deep learning ,neural network >> ML 
+
+ types of ML
+ ===========
+ suprevised >>data,label 
+ classification>>binary and multi classification
+ regression>>how many,how much ?
+ unsupervised >no label,need to define outputs
+create cluster,groups ,we need to provide label (or create groups/cluster)
+ transfer learning 
+
+ reinforcement (skill acquistion,realtime learning,rewards,penaliteis)
+   
+
+   ML algos>>called models 
+
+   data types
+   ========
+   1)strucutred data ,excel,csv,format defined ,numbers 
+   2)unstrcutured data ,images,videos,phonecalls,not numbers
+
+types of evaluation (metrics)
+=========
+classification >>accuracy,precison,recall 
+regression >MAE,MSE,RMSE 
+recomendation > precison at K
+
+
+faetures in data 
+===========
+info about data ,forms of data 
+numerical faetures
+categroical faetures(words)
+dervied(new) feature(data)>feature enginerring 
+
+feature coveraage >>sample data should have better data/feature spread,should avoid skewed data/features.
+atelast 10 per coveraage
+
+
+splitting data
+========
+based on data and problem>>decide which model(algo) to use 
+> choosing and traning a model
+> tunning a model 
+> model comparision 
+
