@@ -1,0 +1,60 @@
+time series vs regression
+=================== 
+time series >>date(should be equal interval) is present ,date should be of some pattern ,need to conver to time series>>aggregate date colume 
+ARMIA,SARIMA etc algo 
+
+anamoly detection and  outlier dection 
+==========
+
+compoentns of time series
+>trend 
+> seasonlity
+> irregurality
+> cyclic 
+techniques
+decompositon(decompose) to detect components in the data 
+auto corlelation
+spectral analysis usig fourier series 
+decison tree 
+neural networks 
+
+addtictive and mutlplicatiove decompsition
+additive == trend + seasoning + residual component >>sum of components 
+muliplicative == product of components,multiply together 
+depends on data ,magnitude of trend and sessional components
+best is to both,plot graph to select final method>addtive or multiplicative 
+
+
+stationarity
+=============
+mean,variabnce,standard deviation reminas constant over time
+we should try to make stationary>>model works best for stationary,transformatative 
+,forecasted value of transformed values,need to peform inverse transfomratioon
+log ,dobule log, diffenrecne>>different techingqu
+stationary >>do forecasting
+not stationary >>do transformation(make stationary),then forecast,then inverse 
+tranform to get exact forecasted values 
+
+to check data is stationary or not >> use ADF,KPSS etc 
+
+testing time series (TS) stationarity
+======
+Facebook profit,neural profit etc alogos don't need stationarity
+>look at plots
+> sumarry statistis
+> statiscal tests(ADF,KPSS etc)
+
+null hypothesis(not stationary,has unit root),alternate hypothesis(stationary)
+p value-parobality value 
+5% error accpetable in p value 
+
+transforation
+===========
+techniques
+>differencing
+>logarthimic
+>smoothing(moving avg,expoentional smoothing)
+
+pre processing
+>1data cleaning,null values,missing values,duplicates
+>data tramisforation,FEATURE scaing,standariation,encoding
