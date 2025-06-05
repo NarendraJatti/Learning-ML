@@ -1,3 +1,14 @@
+https://machinelearningmastery.com/the-roadmap-for-mastering-mlops-in-2025/
+
+https://machinelearningmastery.com/time-series-forecasting-methods-in-python-cheat-sheet/
+
+https://github.com/facebook/prophet
+
+https://drive.google.com/drive/folders/10qrq0T1W66wJcOOg0Q91-ssdmIHyARn1
+
+
+https://www.youtube.com/watch?v=vV12dGe_Fho>>xgboost 
+
 time series vs regression
 =================== 
 time series >>date(should be equal interval) is present ,date should be of some pattern ,need to conver to time series>>aggregate date colume 
@@ -58,3 +69,125 @@ techniques
 pre processing
 >1data cleaning,null values,missing values,duplicates
 >data tramisforation,FEATURE scaing,standariation,encoding
+
+
+outlier treatment
+============
+time serise problesm,keep outliers intact
+using sigma technique 
+
+
+algorithms
+=========
+ARIMA
+Facebook prophet
+LSTMs
+GARCH 
+SARIMA
+VARMA
+
+ARIMA
+==
+PACF 
+auto correlation analysis 
+
+
+Dickey-Fuller Test for Time Series Stationarity
+The Dickey-Fuller test is a statistical test used to determine whether a time series is stationary or not. Stationarity is important because most time series forecasting models (like ARIMA) require the data to be stationary.
+
+Interpreting the Results:
+ADF Statistic: More negative = stronger rejection of non-stationarity
+
+p-value: If ≤ 0.05, we reject the null hypothesis (series is stationary)
+
+Critical Values: If ADF statistic < critical value, reject null hypothesis
+In this case, you'll likely get:
+
+p-value > 0.05 → Fail to reject null hypothesis → series is non-stationary
+
+This makes sense because the Air Passengers data has clear upward trend and seasonality
+Making Data Stationary
+To make this data stationary, we might:
+
+Take the first difference (subtract each point from the previous one)
+
+Apply a log transformation
+
+Use seasonal decomposition
+
+Key Points to Remember:
+Always visualize your data first
+
+If p-value ≤ 0.05, data is stationary
+
+If not, apply transformations until it becomes stationary
+
+The test has different versions (ADF is most common)
+
+When performing the Dickey-Fuller test (or Augmented Dickey-Fuller/ADF test), the p-value and critical values help you decide whether your time series is stationary or not. 
+The Decision Framework
+Null Hypothesis (H₀): The time series has a unit root (is non-stationary)
+
+Alternative Hypothesis (H₁): The time series does not have a unit root (is stationary)
+
+ADF Statistic: 0.815
+p-value: 0.992
+Critical Values:
+   1%: -3.481
+   5%: -2.884
+   10%: -2.579
+Analysis:
+p-value (0.992) > 0.05 → Fail to reject H₀ → Non-stationary
+
+ADF (0.815) > all critical values:
+
+0.815 > -2.884 (5% level) → Fail to reject H₀ → Non-stationary
+
+Why Both Metrics?
+p-value: Gives you a precise probability measure
+
+Critical values: Show how your test statistic compares to standard thresholds at different confidence levels
+
+They will always agree in their conclusion, but provide different perspectives on the result.
+
+Practical Decision Making
+For most applications:
+
+First look at the p-value for a quick decision
+
+Check critical values if you need to know at what confidence level you can reject the null
+
+If either method suggests stationarity (p ≤ 0.05 OR ADF < critical value), you can treat the series as stationary
+
+Remember: The Dickey-Fuller test tends to have low power (high Type II error rate), so if you're close to the threshold (e.g., p = 0.06), you might want to difference the data anyway to be safe.
+
+
+ADF Statistic: -3.0
+Critical Values:
+   1%: -3.5
+   5%: -2.9
+   10%: -2.6
+Interpretation:
+At 1% level: -3.0 > -3.5 → Fail to reject H₀
+
+At 5% level: -3.0 < -2.9 → Reject H₀
+
+At 10% level: -3.0 < -2.6 → Reject H₀
+
+This gives you a "spectrum of confidence":
+
+You can't claim stationarity at 99% confidence
+
+But can claim it at 95% and 90% confidence
+
+Why They Ultimately Agree
+The conclusions will never contradict each other - they form a consistent gradient of confidence. If you reject at 1%, you'll always reject at 5% and 10%. The different levels just tell you how strong your evidence is.
+
+Practical Implications
+For academic/research papers: Often use 1% or 5%
+
+For business decisions: 5% or 10% may be acceptable
+
+For model preprocessing: If you're borderline (e.g., p=0.06), differencing might still help your model
+
+Remember: The p-value gives you the exact probability, while critical values show you standard thresholds. A p-value of 0.04 means you'd reject at 5% but not at 1%, matching what the critical values would tell you.

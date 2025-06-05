@@ -1,0 +1,272 @@
+
+tensorflow ,pytorch >>deep learning 
+
+ANN: Artifical neural network >cloassification & regression
+CNN: convolutional neural network >Images,videos frames
+RCNN 
+Masked RCNN
+YOLO 
+object dections
+RNN: Recurrent neural network ,ip>text,time series etc 
+
+ Neurons (Nodes)
+A neuron (or node) is the basic computational unit in a neural network.
+
+Each neuron:
+
+Receives input(s) (from the previous layer or input data).
+
+Computes a weighted sum:
+z
+=
+w
+1
+x
+1
++
+w
+2
+x
+2
++
+.
+.
+.
++
+w
+n
+x
+n
++
+b
+z=w 
+1
+​
+ x 
+1
+​
+ +w 
+2
+​
+ x 
+2
+​
+ +...+w 
+n
+​
+ x 
+n
+​
+ +b
+(where 
+w
+w = weights, 
+x
+x = inputs, 
+b
+b = bias).
+
+Applies an activation function to introduce non-linearity (e.g., ReLU, Sigmoid).
+
+Key Idea:
+
+Neurons learn by adjusting their weights and biases during training (via backpropagation).
+
+
+In deep learning, hidden layers, neurons, and activation functions are fundamental components of neural networks. Let's break them down:
+
+1. Hidden Layers
+Hidden layers are the intermediate layers between the input layer (where data is fed) and the output layer (where predictions are made).
+
+They perform computations on the input data to extract meaningful features (patterns) that help the model make accurate predictions.
+
+A deep neural network (DNN) has multiple hidden layers, enabling it to learn complex representations (hence the term "deep" learning).
+
+Example:
+In a neural network for image recognition:
+
+The first hidden layer might detect edges.
+
+The second hidden layer might recognize shapes.
+
+The third hidden layer could identify objects.
+
+
+. Activation Functions
+An activation function determines whether a neuron should "fire" (pass a signal to the next layer).
+
+Without activation functions, the network would just be a linear regression model (incapable of learning complex patterns).
+
+Common Activation Functions:
+
+Sigmoid (σ):
+σ
+(
+z
+)
+=
+1
+1
++
+e
+−
+z
+σ(z)= 
+1+e 
+−z
+ 
+1
+​
+ 
+(Outputs between 0 and 1; used for binary classification).
+
+ReLU (Rectified Linear Unit):
+ReLU
+(
+z
+)
+=
+max
+⁡
+(
+0
+,
+z
+)
+ReLU(z)=max(0,z)
+(Fast computation; avoids vanishing gradients in deep networks).
+
+Softmax:
+Used in the output layer for multi-class classification (converts scores to probabilities).
+
+Why Use Them?
+
+Introduce non-linearity, allowing the network to learn complex relationships.
+
+Decide which neurons to activate (e.g., ReLU sets negative values to 0).
+
+
+Analogy: Human Brain vs. Neural Network
+Neuron ≈ Brain cell (processes signals).
+
+Hidden layers ≈ Brain regions (each specializes in certain tasks).
+
+Activation function ≈ Decision to pass a signal (like synapses firing).
+
+
+In neural networks, the term "fire" is borrowed from biology, where real neurons in the brain electrically activate (or "fire") to transmit signals to other neurons.
+
+What Does "Firing" Mean in Artificial Neurons?
+When we say a neuron "fires", it means:
+
+The neuron receives inputs (from previous layers or raw data).
+
+It computes a weighted sum of these inputs (plus a bias term):
+
+z
+=
+w
+1
+x
+1
++
+w
+2
+x
+2
++
+.
+.
+.
++
+w
+n
+x
+n
++
+b
+z=w 
+1
+​
+ x 
+1
+​
+ +w 
+2
+​
+ x 
+2
+​
+ +...+w 
+n
+​
+ x 
+n
+​
+ +b
+The activation function decides whether the neuron's output is strong enough to pass forward to the next layer.
+
+If the activation function outputs a non-zero value (e.g., ReLU outputs a positive number), the neuron "fires" and sends a signal.
+
+If the output is zero (e.g., ReLU for negative inputs), the neuron is "inactive" and blocks the signal.
+
+Why Is Firing Important?
+Feature Selection: Only "important" signals (based on weights/inputs) propagate.
+
+Example: In image recognition, a neuron might fire only if it detects an edge in a specific direction.
+
+Non-Linearity: Without firing thresholds, neural networks would just be linear models (incapable of learning complex patterns).
+
+Sparsity: Some neurons fire, others don’t—this makes the network efficient and scalable.
+
+
+
+activation functions type 
+==========
+steps functions >> binary classification problems
+linear function
+sigmoid function important
+
+
+
+
+
+perceptron (arti neuron,nerual netwrok unit)
+=================
+single layer 
+binary classification
+input layer  
+hidden layer >> step1(summation),step2(apply activation function)
+loss function==error
+cost function
+
+ANN >>multi layered neural network 
+
+feed forward neual network 
+
+
+multi layered perception model
+>forward porograpaton
+> backward progration 
+> loss function
+>activation functions
+>optimiziers
+
+Multi-Layer Perceptron (MLP) Explained Simply
+An MLP is a type of feedforward neural network with at least one hidden layer between input and output. It learns using forward propagation (prediction) and backward propagation (learning from mistakes).
+
+Loss Function (Error Calculation)
+Measures how wrong the prediction (ŷ) is compared to the true value (y).
+Mean Squared Error (MSE) for regression:
+Cross-Entropy for classification.
+
+Goal: Minimize this loss by adjusting weights (w) and biases (b).
+
+Summary with Analogy
+Forward Prop: Like guessing an exam score blindly.
+
+Loss Function: Realizing you scored 35 instead of 85.
+
+Backward Prop: Analyzing which study habits (weights) caused the mistake.
+
+Optimizer: Changing study strategy (e.g., focus more on weak topics)
