@@ -270,3 +270,149 @@ Loss Function: Realizing you scored 35 instead of 85.
 Backward Prop: Analyzing which study habits (weights) caused the mistake.
 
 Optimizer: Changing study strategy (e.g., focus more on weak topics)
+
+
+loss function == error
+
+backward propogation
+=================
+x*y >>multiply
+
+
+chain rule of derivatives
+============
+splitting
+Why Derivatives in Loss Functions? What’s Global Minima? How Backprop Reduces Loss?
+1️⃣ Why Derivatives?
+
+Derivatives measure how the loss changes w.r.t. model parameters (weights).
+
+They guide optimization by indicating the direction to adjust weights for minimal loss.
+
+2️⃣ What is Global Minima?
+
+The lowest possible loss value where the model performs best.
+
+Optimization aims to reach here (avoiding local minima/saddle points).
+
+3️⃣ How Backprop Reduces Loss?
+
+Forward Pass: Computes predictions & loss.
+
+Backward Pass: Uses chain rule (calculus) to calculate gradients.
+
+Gradient Descent: Updates weights in the opposite direction of gradients to minimize loss.
+
+Pro Tip: Techniques like momentum, Adam, and learning rate scheduling help escape poor minima & speed up convergence!
+
+2️⃣ What is Global Minima?
+Global Minima = The lowest point of the loss curve where the model performs best.
+
+Visualization: Imagine a bowl-shaped curve—the bottom is the optimal (w, b) with least error.
+
+optimizeirs >>reducing loss function by back propogation,updating werights
+
+vanishing gradient problem
+=============
+
+
+tanh activation funticon
+===========
+
+
+relu activation funciton
+=======
+dead neuron
+
+
+softmax activation func
+================
+
+
+which activation function to use when?
+==============
+
+loss function vs cost funtion
+=======
+gradient descent optmizser backward propogration to reduce loss funtion
+
+
+The vanishing gradient problem is a major challenge in training deep neural networks, particularly those using activation functions like sigmoid or tanh. It occurs when gradients become extremely small as they're backpropagated through the network, causing earlier layers to learn very slowly or stop learning altogether
+
+
+loss funtions in regresission
+mes,mae,huabar loss,rmse 
+
+loss funtions in classfifcation
+cross entropy
+
+
+optimizers
+===========
+backward progarion,updating proper werights to reduce erros
+reducing the loss function,reduceing cost funtion
+>  gradient descent>>epocsh adn iterations
+> stochastic gradient descent(SGD)
+> mini batch sgd 
+>sgd with momentun 
+> adarad & rmsprop
+> adam optimizsers
+
+
+Loss Function
+A loss function (or error function) measures how well a model performs on a single training example. It quantifies the difference between the predicted output and the actual target value.
+
+Cost Function
+A cost function (or objective function) is the average of loss functions over the entire training dataset. It represents the total error of the model.
+
+Handling Noise:
+Data Cleaning: Remove or correct noisy samples
+
+Regularization: Techniques like L1/L2 regularization
+
+Robust Loss Functions: Like Huber loss
+
+Noise Injection: Adding artificial noise to improve generalization
+
+Ensemble Methods: Combining multiple models
+
+
+adagard optimizer
+==============
+
+
+adam optimizer (best one?)
+=============
+
+
+weight initialization techiniues
+===============
+to overcome exploding gardient problem
+
+
+dropout layers
+==========
+
+
+ANN>>supervised learning
+CCN: convoltion neural network>>input>>images,object detection
+
+convulution>applying filter plus relu function
+convolution image
+convulotion operation
+filters
+vertical edge fileter 
+padding in CNN
+relu operation in CNN
+convultion layer
+polling in cnn 
+fully connected layer
+feature extraction
+
+
+Computational Resources
+
+Deep Learning requires GPUs/TPUs and more training time
+
+ML models train faster on CPUs
+
